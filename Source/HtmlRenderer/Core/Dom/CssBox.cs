@@ -823,7 +823,22 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                     _listItemBox.PerformLayoutImp(g);
                     _listItemBox.Size = new RSize(_listItemBox.Words[0].Width, _listItemBox.Words[0].Height);
                 }
+
                 _listItemBox.Words[0].Left = Location.X - _listItemBox.Size.Width - 5;
+                foreach (var box in Boxes)
+                {
+                    // Pretty sure that ActualPaddingTop has already been taken into account
+                    if (box.FirstHostingLineBox != null)
+                    {
+                        _listItemBox.Words[0].Top = box.FirstHostingLineBox.Words[0].Top;
+                        return;
+                    }
+                    if (box.Words.Count > 0)
+                    {
+                        _listItemBox.Words[0].Top = box.Words[0].Top;
+                        return;
+                    }
+                }
                 _listItemBox.Words[0].Top = Location.Y + ActualPaddingTop; // +FontAscent;
             }
         }
