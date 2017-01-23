@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -304,7 +304,11 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                         word.Left = curx;
                         word.Top = cury;
 
-                        if (!box.IsFixed && box.PageBreakInside == CssConstants.Avoid)
+                        // As per https://github.com/ArthurHub/HTML-Renderer/pull/41#issuecomment-260791590
+                        // changed from
+                        // if (!box.IsFixed && box.PageBreakInside == CssConstants.Avoid)
+                        // to always prevent words from being split in half
+                        if (!box.IsFixed)
                         {
                             word.BreakPage();
                         }
@@ -384,7 +388,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         }
 
         /// <summary>
-        /// Recursively creates the rectangles of the blockBox, by bubbling from deep to outside of the boxes 
+        /// Recursively creates the rectangles of the blockBox, by bubbling from deep to outside of the boxes
         /// in the rectangle structure
         /// </summary>
         private static void BubbleRectangles(CssBox box, CssLineBox line)
