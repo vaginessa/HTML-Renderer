@@ -6,12 +6,13 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 using TheArtOfDev.HtmlRenderer.Core.Utils;
@@ -306,7 +307,10 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
 
                         if (!box.IsFixed)
                         {
-                            word.BreakPage();
+                            // Rudimentary support for page-break-before:
+                            //   - only supports "always" right now
+                            //   - doesn't work on non-"leaf" elements
+                            word.BreakPage(box.PageBreakBefore == CssConstants.Always);
                         }
 
                         curx = word.Left + word.FullWidth;
@@ -384,7 +388,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         }
 
         /// <summary>
-        /// Recursively creates the rectangles of the blockBox, by bubbling from deep to outside of the boxes 
+        /// Recursively creates the rectangles of the blockBox, by bubbling from deep to outside of the boxes
         /// in the rectangle structure
         /// </summary>
         private static void BubbleRectangles(CssBox box, CssLineBox line)
