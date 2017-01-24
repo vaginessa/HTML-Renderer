@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -293,6 +293,9 @@ namespace TheArtOfDev.HtmlRenderer.Core.Utils
                     break;
                 case "padding-top":
                     cssBox.PaddingTop = value;
+                    break;
+                case "page-break-before":
+                    cssBox.PageBreakBefore = value;
                     break;
                 case "page-break-inside":
                     cssBox.PageBreakInside = value;
