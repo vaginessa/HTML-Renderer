@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -20,7 +20,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
     /// Represents a word inside an inline box
     /// </summary>
     /// <remarks>
-    /// Because of performance, words of text are the most atomic 
+    /// Because of performance, words of text are the most atomic
     /// element in the project. It should be characters, but come on,
     /// imagine the performance when drawing char by char on the device.<br/>
     /// It may change for future versions of the library.
@@ -269,17 +269,18 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             return string.Format("{0} ({1} char{2})", Text.Replace(' ', '-').Replace("\n", "\\n"), Text.Length, Text.Length != 1 ? "s" : string.Empty);
         }
 
-        public bool BreakPage()
+        public bool BreakPage(bool forcePageBreak)
         {
             var container = this.OwnerBox.HtmlContainer;
 
+            // if this item is taller than the page height, no amount of page-breaking will make it fit
             if (this.Height >= container.PageSize.Height)
                 return false;
 
             var remTop = (this.Top - container.MarginTop) % container.PageSize.Height;
             var remBottom = (this.Bottom - container.MarginTop) % container.PageSize.Height;
 
-            if (remTop > remBottom)
+            if (remTop > remBottom || forcePageBreak)
             {
                 this.Top += container.PageSize.Height - remTop + 1;
                 return true;

@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -84,6 +84,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         private string _paddingBottom = "0";
         private string _paddingRight = "0";
         private string _paddingTop = "0";
+        private string _pageBreakBefore = CssConstants.Avoid;
         private string _pageBreakInside = CssConstants.Auto;
         private string _right;
         private string _textAlign = string.Empty;
@@ -397,6 +398,15 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
             {
                 _paddingTop = value;
                 _actualPaddingTop = double.NaN;
+            }
+        }
+
+        public string PageBreakBefore
+        {
+            get { return _pageBreakBefore; }
+            set
+            {
+                _pageBreakBefore = value;
             }
         }
 
@@ -736,7 +746,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         }
 
         /// <summary>
-        /// Gets or sets the bottom of the box. 
+        /// Gets or sets the bottom of the box.
         /// (When setting, alters only the Size.Height of the box)
         /// </summary>
         public double ActualBottom
@@ -1181,7 +1191,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
         }
 
         /// <summary>
-        /// 
+        ///
         /// Gets the actual color for the text.
         /// </summary>
         public RColor ActualColor

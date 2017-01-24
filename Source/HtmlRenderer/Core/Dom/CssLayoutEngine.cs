@@ -12,6 +12,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 using TheArtOfDev.HtmlRenderer.Core.Utils;
@@ -304,13 +305,21 @@ namespace TheArtOfDev.HtmlRenderer.Core.Dom
                         word.Left = curx;
                         word.Top = cury;
 
-                        // As per https://github.com/ArthurHub/HTML-Renderer/pull/41#issuecomment-260791590
-                        // changed from
-                        // if (!box.IsFixed && box.PageBreakInside == CssConstants.Avoid)
-                        // to always prevent words from being split in half
                         if (!box.IsFixed)
                         {
-                            word.BreakPage();
+                            // As per https://github.com/ArthurHub/HTML-Renderer/pull/41#issuecomment-260791590
+                            // changed from
+                            //     if (!box.IsFixed && box.PageBreakInside == CssConstants.Avoid)
+                            // to always prevent words from being split in half
+                            var brokePage = word.BreakPage(false);
+
+                            // Rudimentary support for page-break-before:
+                            //   - only supports "always" right now
+                            //   - doesn't work on non-leaf elements
+                            if (!brokePage && box.PageBreakBefore == CssConstants.Always)
+                            {
+                                word.BreakPage(true);
+                            }
                         }
 
                         curx = word.Left + word.FullWidth;
