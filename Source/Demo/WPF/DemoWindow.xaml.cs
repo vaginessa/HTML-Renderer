@@ -24,7 +24,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
     /// <summary>
     /// Interaction logic for DemoWindow.xaml
     /// </summary>
-    public partial class DemoWindow
+    public partial class DemoWindow : Window
     {
         #region Fields/Consts
 

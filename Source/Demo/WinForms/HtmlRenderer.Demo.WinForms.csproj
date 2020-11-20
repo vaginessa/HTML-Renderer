@@ -1,20 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8AD34FE8-8382-4A8A-B3AA-A0392ED42423}</ProjectGuid>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TheArtOfDev.HtmlRenderer.Demo.WinForms</RootNamespace>
     <AssemblyName>HtmlRendererWinFormsDemo</AssemblyName>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>2.0</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -31,95 +20,58 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>html.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GenerateImageForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GenerateImageForm.Designer.cs">
+    <Compile Update="GenerateImageForm.cs" />
+    <Compile Update="GenerateImageForm.Designer.cs">
       <DependentUpon>GenerateImageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HtmlRenderingHelper.cs" />
-    <Compile Include="MainControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MainControl.Designer.cs">
+    <Compile Update="MainControl.cs" />
+    <Compile Update="MainControl.Designer.cs">
       <DependentUpon>MainControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="PerfForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PerfForm.Designer.cs">
+    <Compile Update="PerfForm.cs" />
+    <Compile Update="PerfForm.Designer.cs">
       <DependentUpon>PerfForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DemoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DemoForm.Designer.cs">
+    <Compile Update="DemoForm.cs" />
+    <Compile Update="DemoForm.Designer.cs">
       <DependentUpon>DemoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="GenerateImageForm.resx">
+    <EmbeddedResource Update="GenerateImageForm.resx">
       <DependentUpon>GenerateImageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainControl.resx">
+    <EmbeddedResource Update="MainControl.resx">
       <DependentUpon>MainControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PerfForm.resx">
+    <EmbeddedResource Update="PerfForm.resx">
       <DependentUpon>PerfForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="DemoForm.resx">
+    <EmbeddedResource Update="DemoForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DemoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="SampleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SampleForm.Designer.cs">
+    <Compile Update="SampleForm.cs" />
+    <Compile Update="SampleForm.Designer.cs">
       <DependentUpon>SampleForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SampleForm.resx">
+    <EmbeddedResource Update="SampleForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>SampleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -142,22 +94,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharp.csproj">
-      <Project>{ca249f5d-9285-40a6-b217-5889ef79fd7e}</Project>
-      <Name>HtmlRenderer.PdfSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\HtmlRenderer.WinForms\HtmlRenderer.WinForms.csproj">
-      <Project>{1b058920-24b4-4140-8ae7-c8c6c38ca52d}</Project>
-      <Name>HtmlRenderer.WinForms</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\HtmlRenderer\HtmlRenderer.csproj">
-      <Project>{fe611685-391f-4e3e-b27e-d3150e51e49b}</Project>
-      <Name>HtmlRenderer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Common\HtmlRenderer.Demo.Common.csproj">
-      <Project>{2390b71f-9400-47f4-b23a-7f2649c87d35}</Project>
-      <Name>HtmlRenderer.Demo.Common</Name>
-    </ProjectReference>
+    <ProjectReference Include="..\..\HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharp.csproj" />
+    <ProjectReference Include="..\..\HtmlRenderer.WinForms\HtmlRenderer.WinForms.csproj" />
+    <ProjectReference Include="..\..\HtmlRenderer\HtmlRenderer.csproj" />
+    <ProjectReference Include="..\Common\HtmlRenderer.Demo.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="html.ico" />
@@ -167,7 +107,6 @@
       <Version>1.50.5147</Version>
     </PackageReference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterResolveReferences">
     <ItemGroup>
       <EmbeddedResource Include="@(ReferenceCopyLocalPaths)" Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
@@ -175,11 +114,4 @@
       </EmbeddedResource>
     </ItemGroup>
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

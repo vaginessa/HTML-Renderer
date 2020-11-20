@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 

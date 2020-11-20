@@ -20,7 +20,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
     /// <summary>
     /// Interaction logic for SampleWindow.xaml
     /// </summary>
-    public partial class SampleWindow
+    public partial class SampleWindow : Window
     {
         public SampleWindow()
         {

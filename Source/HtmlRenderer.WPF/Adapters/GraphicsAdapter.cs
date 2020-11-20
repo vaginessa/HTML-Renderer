@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -269,7 +269,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
                 x += .5;
                 y += .5;
             }
-            
+
             _g.DrawRectangle(null, ((PenAdapter)pen).CreatePen(), new Rect(x, y, width, height));
         }
 

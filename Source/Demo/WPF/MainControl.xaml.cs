@@ -28,7 +28,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
     /// <summary>
     /// Interaction logic for MainControl.xaml
     /// </summary>
-    public partial class MainControl
+    public partial class MainControl : UserControl
     {
         #region Fields and Consts
 
