@@ -22,7 +22,7 @@
         </Border>
         <TextBlock Text="Html Panel" Grid.Row="2" Grid.Column="0" Margin="10 0"/>
         <wpf:HtmlPanel x:Name="_htmlPanel" Grid.Row="3" Grid.Column="0" Margin="10 5" MouseLeftButtonUp="OnHtmlControl_click"/>
-        <xctk:PropertyGrid x:Name="_propertyGrid" Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" PropertyValueChanged="OnPropertyChanged"/>
+        <!--<xctk:PropertyGrid x:Name="_propertyGrid" Grid.Row="0" Grid.Column="2" Grid.RowSpan="4" PropertyValueChanged="OnPropertyChanged"/>-->
         <GridSplitter Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" Width="4" Background="#BFDBFF" ResizeBehavior="PreviousAndNext" VerticalAlignment="Stretch" />
     </Grid>
 </Window>

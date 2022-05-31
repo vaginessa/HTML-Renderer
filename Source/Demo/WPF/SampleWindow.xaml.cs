@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -29,19 +29,19 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
             _htmlLabel.Text = DemoUtils.SampleHtmlLabelText;
             _htmlPanel.Text = DemoUtils.SampleHtmlPanelText;
 
-            _propertyGrid.SelectedObject = _htmlLabel;
+            //_propertyGrid.SelectedObject = _htmlLabel;
         }
 
         private void OnHtmlControl_click(object sender, MouseButtonEventArgs e)
         {
-            _propertyGrid.SelectedObject = sender;
+            //_propertyGrid.SelectedObject = sender;
         }
 
-        private void OnPropertyChanged(object sender, PropertyValueChangedEventArgs e)
-        {
-            var control = (UIElement)_propertyGrid.SelectedObject;
-            control.InvalidateMeasure();
-            control.InvalidateVisual();
-        }
+        //private void OnPropertyChanged(object sender, PropertyValueChangedEventArgs e)
+        //{
+        //    var control = (UIElement)_propertyGrid.SelectedObject;
+        //    control.InvalidateMeasure();
+        //    control.InvalidateVisual();
+        //}
     }
 }
