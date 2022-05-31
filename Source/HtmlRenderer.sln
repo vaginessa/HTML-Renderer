@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.WPF", "HtmlRen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer", "HtmlRenderer\HtmlRenderer.csproj", "{FE611685-391F-4E3E-B27E-D3150E51E49B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.PdfSharp", "HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharp.csproj", "{CA249F5D-9285-40A6-B217-5889EF79FD7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HtmlRenderer.PdfSharpCore", "HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharpCore.csproj", "{CA249F5D-9285-40A6-B217-5889EF79FD7E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AA47D163-2ECF-45FB-8798-2432681396B5}"
 	ProjectSection(SolutionItems) = preProject

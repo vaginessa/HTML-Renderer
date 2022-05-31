@@ -6,14 +6,12 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
-using PdfSharp.Drawing;
-using PdfSharp.Pdf;
-using System.Drawing;
-using System.Drawing.Text;
+using PdfSharpCore.Drawing;
+using PdfSharpCore.Pdf;
 using System.IO;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
@@ -44,12 +42,13 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
             AddFontFamilyMapping("monospace", "Courier New");
             AddFontFamilyMapping("Helvetica", "Arial");
 
-            var families = new InstalledFontCollection();
+            // This doesn't work on non-Windows systems since it uses System.Drawing.Common.
+            //var families = new InstalledFontCollection();
 
-            foreach (var family in families.Families)
-            {
-                AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
-            }
+            //foreach (var family in families.Families)
+            //{
+            //    AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
+            //}
         }
 
         /// <summary>
@@ -62,15 +61,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
 
         protected override RColor GetColorInt(string colorName)
         {
-            try
-            {
-                var color = Color.FromKnownColor((KnownColor)System.Enum.Parse(typeof(KnownColor), colorName, true));
-                return Utils.Convert(color);
-            }
-            catch
-            {
-                return RColor.Empty;
-            }
+            return W3CColorUtility.TryParsew3CColor(colorName)
+                ?? RColor.Empty;
         }
 
         protected override RPen CreatePen(RColor color)
@@ -114,7 +106,7 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
 
         protected override RImage ImageFromStreamInt(Stream memoryStream)
         {
-            return new ImageAdapter(XImage.FromStream(memoryStream));
+            return new ImageAdapter(XImage.FromStream(() => memoryStream));
         }
 
         protected override RFont CreateFontInt(string family, double size, RFontStyle style)

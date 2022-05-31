@@ -6,9 +6,11 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
+
+using PdfSharpCore;
 
 using System;
 using System.Diagnostics;
@@ -19,7 +21,6 @@ using System.Windows.Forms;
 using TheArtOfDev.HtmlRenderer.Demo.Common;
 using TheArtOfDev.HtmlRenderer.PdfSharp;
 using TheArtOfDev.HtmlRenderer.WinForms;
-using PdfSharp;
 
 namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
 {
@@ -45,13 +46,13 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
             InitializeComponent();
 
             Icon = GetIcon();
-            _openSampleFormTSB.Image = Common.Properties.Resources.form;
-            _showIEViewTSSB.Image = Common.Properties.Resources.browser;
-            _openInExternalViewTSB.Image = Common.Properties.Resources.chrome;
-            _useGeneratedHtmlTSB.Image = Common.Properties.Resources.code;
-            _generateImageSTB.Image = Common.Properties.Resources.image;
-            _generatePdfTSB.Image = Common.Properties.Resources.pdf;
-            _runPerformanceTSB.Image = Common.Properties.Resources.stopwatch;
+            _openSampleFormTSB.Image = ImageFromBytes(Common.Properties.Resources.form);
+            _showIEViewTSSB.Image = ImageFromBytes(Common.Properties.Resources.browser);
+            _openInExternalViewTSB.Image = ImageFromBytes(Common.Properties.Resources.chrome);
+            _useGeneratedHtmlTSB.Image = ImageFromBytes(Common.Properties.Resources.code);
+            _generateImageSTB.Image = ImageFromBytes(Common.Properties.Resources.image);
+            _generatePdfTSB.Image = ImageFromBytes(Common.Properties.Resources.pdf);
+            _runPerformanceTSB.Image = ImageFromBytes(Common.Properties.Resources.stopwatch);
 
             StartPosition = FormStartPosition.CenterScreen;
             var size = Screen.GetWorkingArea(Point.Empty);
@@ -61,6 +62,16 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
 
             _showIEViewTSSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
             _generatePdfTSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
+        }
+
+        private Image ImageFromBytes(
+            byte[] imageBytes
+        )
+        {
+            using (var ms = new MemoryStream(imageBytes))
+            {
+                return Image.FromStream(ms);
+            };
         }
 
         /// <summary>

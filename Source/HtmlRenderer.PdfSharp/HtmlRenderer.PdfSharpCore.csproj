@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <OutputType>Library</OutputType>
-    <RootNamespace>TheArtOfDev.HtmlRenderer.PdfSharp</RootNamespace>
+    <RootNamespace>TheArtOfDev.HtmlRenderer.PdfSharpCore</RootNamespace>
     <RestorePackages>true</RestorePackages>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
@@ -15,11 +15,9 @@
     <ProjectReference Include="..\HtmlRenderer\HtmlRenderer.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="PDFsharp">
-      <Version>1.50.5147</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.326103">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="PdfSharpCore" Version="1.3.24" />
   </ItemGroup>
 </Project>

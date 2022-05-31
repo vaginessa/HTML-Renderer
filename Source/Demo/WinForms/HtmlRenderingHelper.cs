@@ -6,11 +6,11 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
-using PdfSharp.Drawing;
+using PdfSharpCore.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -88,7 +88,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
             using (var ms = new MemoryStream())
             {
                 img.Save(ms, img.RawFormat);
-                xImg = img != null ? XImage.FromStream(ms) : null;
+                xImg = img != null ? XImage.FromStream(() => ms) : null;
             }
 
             return xImg;
@@ -123,7 +123,8 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
                 using (var ms = new MemoryStream())
                 {
                     img.Save(ms, img.RawFormat);
-                    xImg = img != null ? XImage.FromStream(ms) : null;
+                    ms.Seek(0L, SeekOrigin.Begin);
+                    xImg = img != null ? XImage.FromStream(() => ms) : null;
                 }
             }
 

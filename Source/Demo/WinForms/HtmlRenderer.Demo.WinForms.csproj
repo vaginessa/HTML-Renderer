@@ -46,7 +46,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharp.csproj" />
+    <ProjectReference Include="..\..\HtmlRenderer.PdfSharp\HtmlRenderer.PdfSharpCore.csproj" />
     <ProjectReference Include="..\..\HtmlRenderer.WinForms\HtmlRenderer.WinForms.csproj" />
     <ProjectReference Include="..\..\HtmlRenderer\HtmlRenderer.csproj" />
     <ProjectReference Include="..\Common\HtmlRenderer.Demo.Common.csproj" />
@@ -55,9 +55,6 @@
     <EmbeddedResource Include="html.ico" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="PDFsharp">
-      <Version>1.50.5147</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.3.326103">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
