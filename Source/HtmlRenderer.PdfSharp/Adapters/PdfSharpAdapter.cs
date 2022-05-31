@@ -41,14 +41,6 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
         {
             AddFontFamilyMapping("monospace", "Courier New");
             AddFontFamilyMapping("Helvetica", "Arial");
-
-            // This doesn't work on non-Windows systems since it uses System.Drawing.Common.
-            //var families = new InstalledFontCollection();
-
-            //foreach (var family in families.Families)
-            //{
-            //    AddFontFamily(new FontFamilyAdapter(new XFontFamily(family.Name)));
-            //}
         }
 
         /// <summary>
@@ -109,6 +101,9 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
             return new ImageAdapter(XImage.FromStream(() => memoryStream));
         }
 
+        public override RFontFamily CreateFontFamily(string family)
+            => new FontFamilyAdapter(new XFontFamily(family));
+
         protected override RFont CreateFontInt(string family, double size, RFontStyle style)
         {
             var fontStyle = (XFontStyle)((int)style);
@@ -118,9 +113,7 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
 
         protected override RFont CreateFontInt(RFontFamily family, double size, RFontStyle style)
         {
-            var fontStyle = (XFontStyle)((int)style);
-            var xFont = new XFont(((FontFamilyAdapter)family).FontFamily.Name, size, fontStyle, new XPdfFontOptions(PdfFontEncoding.Unicode));
-            return new FontAdapter(xFont);
+            return CreateFontInt(((FontFamilyAdapter)family).FontFamily.Name, size, style);
         }
     }
 }

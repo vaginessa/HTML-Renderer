@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -58,6 +58,8 @@ namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters
         {
             _font = font;
         }
+
+        public override string Family => Font.FontFamily.Name;
 
         /// <summary>
         /// the underline win-forms font.

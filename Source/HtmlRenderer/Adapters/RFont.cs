@@ -17,6 +17,8 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
     /// </summary>
     public abstract class RFont
     {
+        public abstract string Family { get; }
+
         /// <summary>
         /// Gets the em-size of this Font measured in the units specified by the Unit property.
         /// </summary>

@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -24,7 +24,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
 {
     /// <summary>
     /// Platform adapter to bridge platform specific objects to HTML Renderer core library.<br/>
-    /// Core uses abstract renderer objects (RAdapter/RControl/REtc...) to access platform specific functionality, the concrete platforms 
+    /// Core uses abstract renderer objects (RAdapter/RControl/REtc...) to access platform specific functionality, the concrete platforms
     /// implements those objects to provide concrete platform implementation. Those allowing the core library to be platform agnostic.
     /// <para>
     /// Platforms: WinForms, WPF, Metro, PDF renders, etc.<br/>
@@ -184,7 +184,7 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
 
         /// <summary>
         /// Adds a font mapping from <paramref name="fromFamily"/> to <paramref name="toFamily"/> iff the <paramref name="fromFamily"/> is not found.<br/>
-        /// When the <paramref name="fromFamily"/> font is used in rendered html and is not found in existing 
+        /// When the <paramref name="fromFamily"/> font is used in rendered html and is not found in existing
         /// fonts (installed or added) it will be replaced by <paramref name="toFamily"/>.<br/>
         /// </summary>
         /// <param name="fromFamily">the font family to replace</param>
@@ -300,6 +300,8 @@ namespace TheArtOfDev.HtmlRenderer.Adapters
         {
             SaveToFileInt(image, name, extension, control);
         }
+
+        public abstract RFontFamily CreateFontFamily(string family);
 
         /// <summary>
         /// Get font instance by given font family name, size and style.

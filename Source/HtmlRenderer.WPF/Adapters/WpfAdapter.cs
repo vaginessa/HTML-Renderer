@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -39,7 +39,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
         /// <summary>
         /// List of valid predefined color names in lower-case
         /// </summary>
-        private static readonly List<string> ValidColorNamesLc; 
+        private static readonly List<string> ValidColorNamesLc;
 
         #endregion
 
@@ -129,15 +129,18 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
             return new ImageAdapter(bitmap);
         }
 
+        public override RFontFamily CreateFontFamily(string family)
+            => new FontFamilyAdapter(new FontFamily(family));
+
         protected override RFont CreateFontInt(string family, double size, RFontStyle style)
         {
             var fontFamily = (FontFamily)new FontFamilyConverter().ConvertFromString(family) ?? new FontFamily();
-            return new FontAdapter(new Typeface(fontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
+            return new FontAdapter(family, new Typeface(fontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
         }
 
         protected override RFont CreateFontInt(RFontFamily family, double size, RFontStyle style)
         {
-            return new FontAdapter(new Typeface(((FontFamilyAdapter)family).FontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
+            return new FontAdapter(family.Name, new Typeface(((FontFamilyAdapter)family).FontFamily, GetFontStyle(style), GetFontWidth(style), FontStretches.Normal), size);
         }
 
         protected override object GetClipboardDataObjectInt(string html, string plainText)

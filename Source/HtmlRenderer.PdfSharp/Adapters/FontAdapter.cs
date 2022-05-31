@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -52,6 +52,8 @@ namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
         {
             _font = font;
         }
+
+        public override string Family => _font.Name;
 
         /// <summary>
         /// the underline win-forms font.

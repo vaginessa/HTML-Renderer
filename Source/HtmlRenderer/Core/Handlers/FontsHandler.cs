@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -26,7 +26,7 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         #region Fields and Consts
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         private readonly RAdapter _adapter;
 
@@ -65,16 +65,44 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
         /// <returns>true - font exists by given family name, false - otherwise</returns>
         public bool IsFontExists(string family)
         {
-            bool exists = _existingFontFamilies.ContainsKey(family);
-            if (!exists)
+            if (_existingFontFamilies.ContainsKey(family))
             {
-                string mappedFamily;
-                if (_fontsMapping.TryGetValue(family, out mappedFamily))
-                {
-                    exists = _existingFontFamilies.ContainsKey(mappedFamily);
-                }
+                return true;
             }
-            return exists;
+
+            if (_fontsMapping.TryGetValue(family, out var mappedFamily))
+            {
+                if (_existingFontFamilies.ContainsKey(mappedFamily))
+                {
+                    return true;
+                }
+
+                // We want to resolve and store under the mapped family,
+                // not the original one.
+                family = mappedFamily;
+            }
+
+            // Note that the size doesn't matter; specifying Regular for the
+            // style gives us the best chance of a match (seems very unlikely
+            // anyone would have italic or bold files installed but not the base
+            // regular file).
+            var font = CreateFont(family, 10.0, RFontStyle.Regular);
+            if (font == null)
+            {
+                return false;
+            }
+
+            // PdfSharpCore will return the first font it knows about if it can't
+            // find the font you requested, so let's check we actually got what
+            // we asked for:
+            if (font.Family != family)
+            {
+                return false;
+            }
+
+            AddFontFamily(_adapter.CreateFontFamily(family));
+
+            return true;
         }
 
         /// <summary>
@@ -86,11 +114,16 @@ namespace TheArtOfDev.HtmlRenderer.Core.Handlers
             ArgChecker.AssertArgNotNull(fontFamily, "family");
 
             _existingFontFamilies[fontFamily.Name] = fontFamily;
+
+            if (fontFamily.Name != fontFamily.Name.ToLowerInvariant())
+            {
+                _existingFontFamilies[fontFamily.Name.ToLowerInvariant()] = fontFamily;
+            }
         }
 
         /// <summary>
         /// Adds a font mapping from <paramref name="fromFamily"/> to <paramref name="toFamily"/> iff the <paramref name="fromFamily"/> is not found.<br/>
-        /// When the <paramref name="fromFamily"/> font is used in rendered html and is not found in existing 
+        /// When the <paramref name="fromFamily"/> font is used in rendered html and is not found in existing
         /// fonts (installed or added) it will be replaced by <paramref name="toFamily"/>.<br/>
         /// </summary>
         /// <param name="fromFamily">the font family to replace</param>

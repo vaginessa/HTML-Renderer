@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -97,6 +97,9 @@ namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters
         {
             return new ImageAdapter(Image.FromStream(memoryStream));
         }
+
+        public override RFontFamily CreateFontFamily(string family)
+            => new FontFamilyAdapter(new FontFamily(family));
 
         protected override RFont CreateFontInt(string family, double size, RFontStyle style)
         {

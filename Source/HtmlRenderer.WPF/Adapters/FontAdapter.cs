@@ -6,7 +6,7 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
@@ -20,6 +20,7 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
     /// </summary>
     internal sealed class FontAdapter : RFont
     {
+
         #region Fields and Consts
 
         /// <summary>
@@ -58,8 +59,9 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
         /// <summary>
         /// Init.
         /// </summary>
-        public FontAdapter(Typeface font, double size)
+        public FontAdapter(string family, Typeface font, double size)
         {
+            Family = family;
             _font = font;
             _size = size;
             _height = 96d / 72d * _size * _font.FontFamily.LineSpacing;
@@ -79,6 +81,8 @@ namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
                 }
             }
         }
+
+        public override string Family { get; }
 
         /// <summary>
         /// the underline win-forms font.
