@@ -92,7 +92,7 @@
           "Microsoft.SourceLink.Common": "1.1.1"
         }
       },
-      "htmlrenderer": {
+      "TheDepartmentOfCode.HtmlRenderer": {
         "type": "Project"
       }
     }

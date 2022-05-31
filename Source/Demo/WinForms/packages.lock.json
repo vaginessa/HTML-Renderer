@@ -534,27 +534,27 @@
           "System.Drawing.Common": "6.0.0"
         }
       },
-      "htmlrenderer": {
-        "type": "Project"
-      },
-      "htmlrenderer.pdfsharpcore": {
-        "type": "Project",
-        "dependencies": {
-          "HtmlRenderer": "1.0.0",
-          "PdfSharpCore": "1.3.24"
-        }
-      },
-      "htmlrenderer.winforms": {
-        "type": "Project",
-        "dependencies": {
-          "HtmlRenderer": "1.0.0",
-          "Microsoft.Windows.Compatibility": "6.0.0"
-        }
-      },
       "HtmlRendererDemoCommon": {
         "type": "Project",
         "dependencies": {
-          "HtmlRenderer": "1.0.0"
+          "TheDepartmentOfCode.HtmlRenderer": "1.0.0"
+        }
+      },
+      "TheDepartmentOfCode.HtmlRenderer": {
+        "type": "Project"
+      },
+      "TheDepartmentOfCode.HtmlRenderer.PdfSharpCore": {
+        "type": "Project",
+        "dependencies": {
+          "PdfSharpCore": "1.3.24",
+          "TheDepartmentOfCode.HtmlRenderer": "1.0.0"
+        }
+      },
+      "TheDepartmentOfCode.HtmlRenderer.Winforms": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.Windows.Compatibility": "6.0.0",
+          "TheDepartmentOfCode.HtmlRenderer": "1.0.0"
         }
       }
     }

@@ -6,6 +6,7 @@
     <RestorePackages>true</RestorePackages>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <IncludeSymbols>True</IncludeSymbols>
+		<PackageId>TheDepartmentOfCode.HtmlRenderer.PdfSharpCore</PackageId>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

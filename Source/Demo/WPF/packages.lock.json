@@ -515,20 +515,20 @@
           "System.Drawing.Common": "6.0.0"
         }
       },
-      "htmlrenderer": {
-        "type": "Project"
-      },
-      "htmlrenderer.wpf": {
-        "type": "Project",
-        "dependencies": {
-          "HtmlRenderer": "1.0.0",
-          "Microsoft.Windows.Compatibility": "6.0.0"
-        }
-      },
       "HtmlRendererDemoCommon": {
         "type": "Project",
         "dependencies": {
-          "HtmlRenderer": "1.0.0"
+          "TheDepartmentOfCode.HtmlRenderer": "1.0.0"
+        }
+      },
+      "TheDepartmentOfCode.HtmlRenderer": {
+        "type": "Project"
+      },
+      "TheDepartmentOfCode.HtmlRenderer.WPF": {
+        "type": "Project",
+        "dependencies": {
+          "Microsoft.Windows.Compatibility": "6.0.0",
+          "TheDepartmentOfCode.HtmlRenderer": "1.0.0"
         }
       }
     }

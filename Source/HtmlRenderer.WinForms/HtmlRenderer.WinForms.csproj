@@ -24,6 +24,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
     <IncludeSymbols>True</IncludeSymbols>
+	  <PackageId>TheDepartmentOfCode.HtmlRenderer.Winforms</PackageId>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
