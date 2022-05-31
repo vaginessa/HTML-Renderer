@@ -4,7 +4,6 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>TheArtOfDev.HtmlRenderer.Demo.WPF</RootNamespace>
     <AssemblyName>HtmlRendererWpfDemo</AssemblyName>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
