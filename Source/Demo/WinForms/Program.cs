@@ -16,48 +16,47 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
+namespace TheArtOfDev.HtmlRenderer.Demo.WinForms;
+
+internal static class Program
 {
-    internal static class Program
+    /// <summary>
+    /// The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    private static void Main()
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        private static void Main()
+        AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
+
+        Application.EnableVisualStyles();
+        Application.SetHighDpiMode(HighDpiMode.SystemAware);
+        Application.SetCompatibleTextRenderingDefault(false);
+        Application.Run(new DemoForm());
+
+        // Application.Run(new PerfForm());
+        //  PerfForm.Run();
+    }
+
+    private static Assembly OnResolveAssembly(object sender, ResolveEventArgs args)
+    {
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();
+        AssemblyName assemblyName = new AssemblyName(args.Name);
+
+        string path = assemblyName.Name + ".dll";
+        if (assemblyName.CultureInfo.Equals(CultureInfo.InvariantCulture) == false)
         {
-            AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
-
-            Application.EnableVisualStyles();
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DemoForm());
-
-            // Application.Run(new PerfForm());
-            //  PerfForm.Run();
+            path = String.Format(@"{0}\{1}", assemblyName.CultureInfo, path);
         }
 
-        private static Assembly OnResolveAssembly(object sender, ResolveEventArgs args)
+        using (Stream stream = executingAssembly.GetManifestResourceStream(path))
         {
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            AssemblyName assemblyName = new AssemblyName(args.Name);
-
-            string path = assemblyName.Name + ".dll";
-            if (assemblyName.CultureInfo.Equals(CultureInfo.InvariantCulture) == false)
+            if (stream != null)
             {
-                path = String.Format(@"{0}\{1}", assemblyName.CultureInfo, path);
+                byte[] assemblyRawBytes = new byte[stream.Length];
+                stream.Read(assemblyRawBytes, 0, assemblyRawBytes.Length);
+                return Assembly.Load(assemblyRawBytes);
             }
-
-            using (Stream stream = executingAssembly.GetManifestResourceStream(path))
-            {
-                if (stream != null)
-                {
-                    byte[] assemblyRawBytes = new byte[stream.Length];
-                    stream.Read(assemblyRawBytes, 0, assemblyRawBytes.Length);
-                    return Assembly.Load(assemblyRawBytes);
-                }
-                return null;
-            }
+            return null;
         }
     }
 }

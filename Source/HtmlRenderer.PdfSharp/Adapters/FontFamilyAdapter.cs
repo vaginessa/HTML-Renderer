@@ -13,37 +13,36 @@
 using PdfSharpCore.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+
+/// <summary>
+/// Adapter for WinForms Font object for core.
+/// </summary>
+internal sealed class FontFamilyAdapter : RFontFamily
 {
     /// <summary>
-    /// Adapter for WinForms Font object for core.
+    /// the underline win-forms font.
     /// </summary>
-    internal sealed class FontFamilyAdapter : RFontFamily
+    private readonly XFontFamily _fontFamily;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public FontFamilyAdapter(XFontFamily fontFamily)
     {
-        /// <summary>
-        /// the underline win-forms font.
-        /// </summary>
-        private readonly XFontFamily _fontFamily;
+        _fontFamily = fontFamily;
+    }
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public FontFamilyAdapter(XFontFamily fontFamily)
-        {
-            _fontFamily = fontFamily;
-        }
+    /// <summary>
+    /// the underline win-forms font family.
+    /// </summary>
+    public XFontFamily FontFamily
+    {
+        get { return _fontFamily; }
+    }
 
-        /// <summary>
-        /// the underline win-forms font family.
-        /// </summary>
-        public XFontFamily FontFamily
-        {
-            get { return _fontFamily; }
-        }
-
-        public override string Name
-        {
-            get { return _fontFamily.Name; }
-        }
+    public override string Name
+    {
+        get { return _fontFamily.Name; }
     }
 }

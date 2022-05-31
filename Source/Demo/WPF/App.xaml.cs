@@ -15,39 +15,38 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WPF
+namespace TheArtOfDev.HtmlRenderer.Demo.WPF;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
+    public App()
     {
-        public App()
+        AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
+    }
+
+    private static Assembly OnResolveAssembly(object sender, ResolveEventArgs args)
+    {
+        Assembly executingAssembly = Assembly.GetExecutingAssembly();
+        AssemblyName assemblyName = new AssemblyName(args.Name);
+
+        string path = assemblyName.Name + ".dll";
+        if (assemblyName.CultureInfo.Equals(CultureInfo.InvariantCulture) == false)
         {
-            AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
+            path = String.Format(@"{0}\{1}", assemblyName.CultureInfo, path);
         }
 
-        private static Assembly OnResolveAssembly(object sender, ResolveEventArgs args)
+        using (Stream stream = executingAssembly.GetManifestResourceStream(path))
         {
-            Assembly executingAssembly = Assembly.GetExecutingAssembly();
-            AssemblyName assemblyName = new AssemblyName(args.Name);
-
-            string path = assemblyName.Name + ".dll";
-            if (assemblyName.CultureInfo.Equals(CultureInfo.InvariantCulture) == false)
+            if (stream != null)
             {
-                path = String.Format(@"{0}\{1}", assemblyName.CultureInfo, path);
+                byte[] assemblyRawBytes = new byte[stream.Length];
+                stream.Read(assemblyRawBytes, 0, assemblyRawBytes.Length);
+                return Assembly.Load(assemblyRawBytes);
             }
-
-            using (Stream stream = executingAssembly.GetManifestResourceStream(path))
-            {
-                if (stream != null)
-                {
-                    byte[] assemblyRawBytes = new byte[stream.Length];
-                    stream.Read(assemblyRawBytes, 0, assemblyRawBytes.Length);
-                    return Assembly.Load(assemblyRawBytes);
-                }
-                return null;
-            }
+            return null;
         }
     }
 }

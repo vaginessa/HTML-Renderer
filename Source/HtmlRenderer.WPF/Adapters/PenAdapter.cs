@@ -14,78 +14,77 @@ using System.Windows.Media;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 
-namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
+namespace TheArtOfDev.HtmlRenderer.WPF.Adapters;
+
+/// <summary>
+/// Adapter for WPF pens objects for core.
+/// </summary>
+internal sealed class PenAdapter : RPen
 {
     /// <summary>
-    /// Adapter for WPF pens objects for core.
+    /// The actual WPF brush instance.
     /// </summary>
-    internal sealed class PenAdapter : RPen
+    private readonly Brush _brush;
+
+    /// <summary>
+    /// the width of the pen
+    /// </summary>
+    private double _width;
+
+    /// <summary>
+    /// the dash style of the pen
+    /// </summary>
+    private DashStyle _dashStyle = DashStyles.Solid;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public PenAdapter(Brush brush)
     {
-        /// <summary>
-        /// The actual WPF brush instance.
-        /// </summary>
-        private readonly Brush _brush;
+        _brush = brush;
+    }
 
-        /// <summary>
-        /// the width of the pen
-        /// </summary>
-        private double _width;
+    public override double Width
+    {
+        get { return _width; }
+        set { _width = value; }
+    }
 
-        /// <summary>
-        /// the dash style of the pen
-        /// </summary>
-        private DashStyle _dashStyle = DashStyles.Solid;
-
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public PenAdapter(Brush brush)
+    public override RDashStyle DashStyle
+    {
+        set
         {
-            _brush = brush;
-        }
-
-        public override double Width
-        {
-            get { return _width; }
-            set { _width = value; }
-        }
-
-        public override RDashStyle DashStyle
-        {
-            set
+            switch (value)
             {
-                switch (value)
-                {
-                    case RDashStyle.Solid:
-                        _dashStyle = DashStyles.Solid;
-                        break;
-                    case RDashStyle.Dash:
-                        _dashStyle = DashStyles.Dash;
-                        break;
-                    case RDashStyle.Dot:
-                        _dashStyle = DashStyles.Dot;
-                        break;
-                    case RDashStyle.DashDot:
-                        _dashStyle = DashStyles.DashDot;
-                        break;
-                    case RDashStyle.DashDotDot:
-                        _dashStyle = DashStyles.DashDotDot;
-                        break;
-                    default:
-                        _dashStyle = DashStyles.Solid;
-                        break;
-                }
+                case RDashStyle.Solid:
+                    _dashStyle = DashStyles.Solid;
+                    break;
+                case RDashStyle.Dash:
+                    _dashStyle = DashStyles.Dash;
+                    break;
+                case RDashStyle.Dot:
+                    _dashStyle = DashStyles.Dot;
+                    break;
+                case RDashStyle.DashDot:
+                    _dashStyle = DashStyles.DashDot;
+                    break;
+                case RDashStyle.DashDotDot:
+                    _dashStyle = DashStyles.DashDotDot;
+                    break;
+                default:
+                    _dashStyle = DashStyles.Solid;
+                    break;
             }
         }
+    }
 
-        /// <summary>
-        /// Create the actual WPF pen instance.
-        /// </summary>
-        public Pen CreatePen()
-        {
-            var pen = new Pen(_brush, _width);
-            pen.DashStyle = _dashStyle;
-            return pen;
-        }
+    /// <summary>
+    /// Create the actual WPF pen instance.
+    /// </summary>
+    public Pen CreatePen()
+    {
+        var pen = new Pen(_brush, _width);
+        pen.DashStyle = _dashStyle;
+        return pen;
     }
 }

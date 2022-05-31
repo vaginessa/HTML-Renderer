@@ -13,47 +13,46 @@
 using System.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters
+namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters;
+
+/// <summary>
+/// Adapter for WinForms brushes objects for core.
+/// </summary>
+internal sealed class BrushAdapter : RBrush
 {
     /// <summary>
-    /// Adapter for WinForms brushes objects for core.
+    /// The actual WinForms brush instance.
     /// </summary>
-    internal sealed class BrushAdapter : RBrush
+    private readonly Brush _brush;
+
+    /// <summary>
+    /// If to dispose the brush when <see cref="Dispose"/> is called.<br/>
+    /// Ignore dispose for cached brushes.
+    /// </summary>
+    private readonly bool _dispose;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public BrushAdapter(Brush brush, bool dispose)
     {
-        /// <summary>
-        /// The actual WinForms brush instance.
-        /// </summary>
-        private readonly Brush _brush;
+        _brush = brush;
+        _dispose = dispose;
+    }
 
-        /// <summary>
-        /// If to dispose the brush when <see cref="Dispose"/> is called.<br/>
-        /// Ignore dispose for cached brushes.
-        /// </summary>
-        private readonly bool _dispose;
+    /// <summary>
+    /// The actual WinForms brush instance.
+    /// </summary>
+    public Brush Brush
+    {
+        get { return _brush; }
+    }
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public BrushAdapter(Brush brush, bool dispose)
+    public override void Dispose()
+    {
+        if (_dispose)
         {
-            _brush = brush;
-            _dispose = dispose;
-        }
-
-        /// <summary>
-        /// The actual WinForms brush instance.
-        /// </summary>
-        public Brush Brush
-        {
-            get { return _brush; }
-        }
-
-        public override void Dispose()
-        {
-            if (_dispose)
-            {
-                _brush.Dispose();
-            }
+            _brush.Dispose();
         }
     }
 }

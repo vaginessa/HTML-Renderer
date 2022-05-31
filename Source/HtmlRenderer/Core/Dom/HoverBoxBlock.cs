@@ -12,46 +12,45 @@
 
 using TheArtOfDev.HtmlRenderer.Core.Entities;
 
-namespace TheArtOfDev.HtmlRenderer.Core.Dom
+namespace TheArtOfDev.HtmlRenderer.Core.Dom;
+
+/// <summary>
+/// CSS boxes that have ":hover" selector on them.
+/// </summary>
+internal sealed class HoverBoxBlock
 {
     /// <summary>
-    /// CSS boxes that have ":hover" selector on them.
+    /// the box that has :hover css on
     /// </summary>
-    internal sealed class HoverBoxBlock
+    private readonly CssBox _cssBox;
+
+    /// <summary>
+    /// the :hover style block data
+    /// </summary>
+    private readonly CssBlock _cssBlock;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public HoverBoxBlock(CssBox cssBox, CssBlock cssBlock)
     {
-        /// <summary>
-        /// the box that has :hover css on
-        /// </summary>
-        private readonly CssBox _cssBox;
+        _cssBox = cssBox;
+        _cssBlock = cssBlock;
+    }
 
-        /// <summary>
-        /// the :hover style block data
-        /// </summary>
-        private readonly CssBlock _cssBlock;
+    /// <summary>
+    /// the box that has :hover css on
+    /// </summary>
+    public CssBox CssBox
+    {
+        get { return _cssBox; }
+    }
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public HoverBoxBlock(CssBox cssBox, CssBlock cssBlock)
-        {
-            _cssBox = cssBox;
-            _cssBlock = cssBlock;
-        }
-
-        /// <summary>
-        /// the box that has :hover css on
-        /// </summary>
-        public CssBox CssBox
-        {
-            get { return _cssBox; }
-        }
-
-        /// <summary>
-        /// the :hover style block data
-        /// </summary>
-        public CssBlock CssBlock
-        {
-            get { return _cssBlock; }
-        }
+    /// <summary>
+    /// the :hover style block data
+    /// </summary>
+    public CssBlock CssBlock
+    {
+        get { return _cssBlock; }
     }
 }

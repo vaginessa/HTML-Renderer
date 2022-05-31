@@ -15,19 +15,18 @@ using System.Globalization;
 using System.Windows.Data;
 using TheArtOfDev.HtmlRenderer.Demo.Common;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WPF
-{
-    public class ToolStripImageConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var imageStream = typeof(Resources).Assembly.GetManifestResourceStream("TheArtOfDev.HtmlRenderer.Demo.Common.Resources." + parameter + ".png");
-            return HtmlRenderingHelper.ImageFromStream(imageStream);
-        }
+namespace TheArtOfDev.HtmlRenderer.Demo.WPF;
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return null;
-        }
+public class ToolStripImageConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        var imageStream = typeof(Resources).Assembly.GetManifestResourceStream("TheArtOfDev.HtmlRenderer.Demo.Common.Resources." + parameter + ".png");
+        return HtmlRenderingHelper.ImageFromStream(imageStream);
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        return null;
     }
 }

@@ -13,48 +13,47 @@
 using System.Windows.Media.Imaging;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
+namespace TheArtOfDev.HtmlRenderer.WPF.Adapters;
+
+/// <summary>
+/// Adapter for WPF Image object for core.
+/// </summary>
+internal sealed class ImageAdapter : RImage
 {
     /// <summary>
-    /// Adapter for WPF Image object for core.
+    /// the underline WPF image.
     /// </summary>
-    internal sealed class ImageAdapter : RImage
+    private readonly BitmapImage _image;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public ImageAdapter(BitmapImage image)
     {
-        /// <summary>
-        /// the underline WPF image.
-        /// </summary>
-        private readonly BitmapImage _image;
+        _image = image;
+    }
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public ImageAdapter(BitmapImage image)
-        {
-            _image = image;
-        }
+    /// <summary>
+    /// the underline WPF image.
+    /// </summary>
+    public BitmapImage Image
+    {
+        get { return _image; }
+    }
 
-        /// <summary>
-        /// the underline WPF image.
-        /// </summary>
-        public BitmapImage Image
-        {
-            get { return _image; }
-        }
+    public override double Width
+    {
+        get { return _image.PixelWidth; }
+    }
 
-        public override double Width
-        {
-            get { return _image.PixelWidth; }
-        }
+    public override double Height
+    {
+        get { return _image.PixelHeight; }
+    }
 
-        public override double Height
-        {
-            get { return _image.PixelHeight; }
-        }
-
-        public override void Dispose()
-        {
-            if (_image.StreamSource != null)
-                _image.StreamSource.Dispose();
-        }
+    public override void Dispose()
+    {
+        if (_image.StreamSource != null)
+            _image.StreamSource.Dispose();
     }
 }

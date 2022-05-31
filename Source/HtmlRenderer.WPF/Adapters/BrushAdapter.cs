@@ -13,35 +13,34 @@
 using System.Windows.Media;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
+namespace TheArtOfDev.HtmlRenderer.WPF.Adapters;
+
+/// <summary>
+/// Adapter for WPF brushes.
+/// </summary>
+internal sealed class BrushAdapter : RBrush
 {
     /// <summary>
-    /// Adapter for WPF brushes.
+    /// The actual WPF brush instance.
     /// </summary>
-    internal sealed class BrushAdapter : RBrush
+    private readonly Brush _brush;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public BrushAdapter(Brush brush)
     {
-        /// <summary>
-        /// The actual WPF brush instance.
-        /// </summary>
-        private readonly Brush _brush;
-
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public BrushAdapter(Brush brush)
-        {
-            _brush = brush;
-        }
-
-        /// <summary>
-        /// The actual WPF brush instance.
-        /// </summary>
-        public Brush Brush
-        {
-            get { return _brush; }
-        }
-
-        public override void Dispose()
-        { }
+        _brush = brush;
     }
+
+    /// <summary>
+    /// The actual WPF brush instance.
+    /// </summary>
+    public Brush Brush
+    {
+        get { return _brush; }
+    }
+
+    public override void Dispose()
+    { }
 }

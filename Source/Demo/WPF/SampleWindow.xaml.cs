@@ -15,33 +15,32 @@ using System.Windows.Input;
 using TheArtOfDev.HtmlRenderer.Demo.Common;
 //using Xceed.Wpf.Toolkit.PropertyGrid;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WPF
+namespace TheArtOfDev.HtmlRenderer.Demo.WPF;
+
+/// <summary>
+/// Interaction logic for SampleWindow.xaml
+/// </summary>
+public partial class SampleWindow
 {
-    /// <summary>
-    /// Interaction logic for SampleWindow.xaml
-    /// </summary>
-    public partial class SampleWindow
+    public SampleWindow()
     {
-        public SampleWindow()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            _htmlLabel.Text = DemoUtils.SampleHtmlLabelText;
-            _htmlPanel.Text = DemoUtils.SampleHtmlPanelText;
+        _htmlLabel.Text = DemoUtils.SampleHtmlLabelText;
+        _htmlPanel.Text = DemoUtils.SampleHtmlPanelText;
 
-            //_propertyGrid.SelectedObject = _htmlLabel;
-        }
-
-        private void OnHtmlControl_click(object sender, MouseButtonEventArgs e)
-        {
-            //_propertyGrid.SelectedObject = sender;
-        }
-
-        //private void OnPropertyChanged(object sender, PropertyValueChangedEventArgs e)
-        //{
-        //    var control = (UIElement)_propertyGrid.SelectedObject;
-        //    control.InvalidateMeasure();
-        //    control.InvalidateVisual();
-        //}
+        //_propertyGrid.SelectedObject = _htmlLabel;
     }
+
+    private void OnHtmlControl_click(object sender, MouseButtonEventArgs e)
+    {
+        //_propertyGrid.SelectedObject = sender;
+    }
+
+    //private void OnPropertyChanged(object sender, PropertyValueChangedEventArgs e)
+    //{
+    //    var control = (UIElement)_propertyGrid.SelectedObject;
+    //    control.InvalidateMeasure();
+    //    control.InvalidateVisual();
+    //}
 }

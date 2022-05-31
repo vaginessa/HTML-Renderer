@@ -12,65 +12,64 @@
 
 using PdfSharpCore.Drawing;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+
+/// <summary>
+/// Because PdfSharp doesn't support texture brush we need to implement it ourselves.
+/// </summary>
+internal sealed class XTextureBrush
 {
+    #region Fields/Consts
+
     /// <summary>
-    /// Because PdfSharp doesn't support texture brush we need to implement it ourselves.
+    /// The image to draw in the brush
     /// </summary>
-    internal sealed class XTextureBrush
+    private readonly XImage _image;
+
+    /// <summary>
+    /// the
+    /// </summary>
+    private readonly XRect _dstRect;
+
+    /// <summary>
+    /// the transform the location of the image to handle center alignment
+    /// </summary>
+    private readonly XPoint _translateTransformLocation;
+
+    #endregion
+
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public XTextureBrush(XImage image, XRect dstRect, XPoint translateTransformLocation)
     {
-        #region Fields/Consts
+        _image = image;
+        _dstRect = dstRect;
+        _translateTransformLocation = translateTransformLocation;
+    }
 
-        /// <summary>
-        /// The image to draw in the brush
-        /// </summary>
-        private readonly XImage _image;
+    /// <summary>
+    /// Draw the texture image in the given graphics at the given location.
+    /// </summary>
+    public void DrawRectangle(XGraphics g, double x, double y, double width, double height)
+    {
+        var prevState = g.Save();
+        g.IntersectClip(new XRect(x, y, width, height));
 
-        /// <summary>
-        /// the
-        /// </summary>
-        private readonly XRect _dstRect;
-
-        /// <summary>
-        /// the transform the location of the image to handle center alignment
-        /// </summary>
-        private readonly XPoint _translateTransformLocation;
-
-        #endregion
-
-
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public XTextureBrush(XImage image, XRect dstRect, XPoint translateTransformLocation)
+        double rx = _translateTransformLocation.X;
+        double w = _image.PixelWidth, h = _image.PixelHeight;
+        while (rx < x + width)
         {
-            _image = image;
-            _dstRect = dstRect;
-            _translateTransformLocation = translateTransformLocation;
-        }
-
-        /// <summary>
-        /// Draw the texture image in the given graphics at the given location.
-        /// </summary>
-        public void DrawRectangle(XGraphics g, double x, double y, double width, double height)
-        {
-            var prevState = g.Save();
-            g.IntersectClip(new XRect(x, y, width, height));
-
-            double rx = _translateTransformLocation.X;
-            double w = _image.PixelWidth, h = _image.PixelHeight;
-            while (rx < x + width)
+            double ry = _translateTransformLocation.Y;
+            while (ry < y + height)
             {
-                double ry = _translateTransformLocation.Y;
-                while (ry < y + height)
-                {
-                    g.DrawImage(_image, rx, ry, w, h);
-                    ry += h;
-                }
-                rx += w;
+                g.DrawImage(_image, rx, ry, w, h);
+                ry += h;
             }
-
-            g.Restore(prevState);
+            rx += w;
         }
+
+        g.Restore(prevState);
     }
 }

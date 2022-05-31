@@ -14,53 +14,52 @@ using System.Windows.Markup;
 using System.Windows.Media;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.WPF.Adapters
+namespace TheArtOfDev.HtmlRenderer.WPF.Adapters;
+
+/// <summary>
+/// Adapter for WPF Font family object for core.
+/// </summary>
+internal sealed class FontFamilyAdapter : RFontFamily
 {
     /// <summary>
-    /// Adapter for WPF Font family object for core.
+    /// Default language to get font family name by
     /// </summary>
-    internal sealed class FontFamilyAdapter : RFontFamily
+    private static readonly XmlLanguage _xmlLanguage = XmlLanguage.GetLanguage("en-us");
+
+    /// <summary>
+    /// the underline win-forms font.
+    /// </summary>
+    private readonly FontFamily _fontFamily;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public FontFamilyAdapter(FontFamily fontFamily)
     {
-        /// <summary>
-        /// Default language to get font family name by
-        /// </summary>
-        private static readonly XmlLanguage _xmlLanguage = XmlLanguage.GetLanguage("en-us");
+        _fontFamily = fontFamily;
+    }
 
-        /// <summary>
-        /// the underline win-forms font.
-        /// </summary>
-        private readonly FontFamily _fontFamily;
+    /// <summary>
+    /// the underline WPF font family.
+    /// </summary>
+    public FontFamily FontFamily
+    {
+        get { return _fontFamily; }
+    }
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public FontFamilyAdapter(FontFamily fontFamily)
+    public override string Name
+    {
+        get
         {
-            _fontFamily = fontFamily;
-        }
-
-        /// <summary>
-        /// the underline WPF font family.
-        /// </summary>
-        public FontFamily FontFamily
-        {
-            get { return _fontFamily; }
-        }
-
-        public override string Name
-        {
-            get
+            string name =  _fontFamily.FamilyNames[_xmlLanguage];
+            if (string.IsNullOrEmpty(name))
             {
-                string name =  _fontFamily.FamilyNames[_xmlLanguage];
-                if (string.IsNullOrEmpty(name))
+                foreach (var familyName in _fontFamily.FamilyNames)
                 {
-                    foreach (var familyName in _fontFamily.FamilyNames)
-                    {
-                        return familyName.Value;
-                    }
+                    return familyName.Value;
                 }
-                return name;
             }
+            return name;
         }
     }
 }

@@ -13,47 +13,46 @@
 using PdfSharpCore.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+
+/// <summary>
+/// Adapter for WinForms Image object for core.
+/// </summary>
+internal sealed class ImageAdapter : RImage
 {
     /// <summary>
-    /// Adapter for WinForms Image object for core.
+    /// the underline win-forms image.
     /// </summary>
-    internal sealed class ImageAdapter : RImage
+    private readonly XImage _image;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="T:System.Object"/> class.
+    /// </summary>
+    public ImageAdapter(XImage image)
     {
-        /// <summary>
-        /// the underline win-forms image.
-        /// </summary>
-        private readonly XImage _image;
+        _image = image;
+    }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="T:System.Object"/> class.
-        /// </summary>
-        public ImageAdapter(XImage image)
-        {
-            _image = image;
-        }
+    /// <summary>
+    /// the underline win-forms image.
+    /// </summary>
+    public XImage Image
+    {
+        get { return _image; }
+    }
 
-        /// <summary>
-        /// the underline win-forms image.
-        /// </summary>
-        public XImage Image
-        {
-            get { return _image; }
-        }
+    public override double Width
+    {
+        get { return _image.PixelWidth; }
+    }
 
-        public override double Width
-        {
-            get { return _image.PixelWidth; }
-        }
+    public override double Height
+    {
+        get { return _image.PixelHeight; }
+    }
 
-        public override double Height
-        {
-            get { return _image.PixelHeight; }
-        }
-
-        public override void Dispose()
-        {
-            _image.Dispose();
-        }
+    public override void Dispose()
+    {
+        _image.Dispose();
     }
 }

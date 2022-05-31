@@ -14,36 +14,35 @@ using System;
 using PdfSharpCore.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+
+/// <summary>
+/// Adapter for WinForms brushes objects for core.
+/// </summary>
+internal sealed class BrushAdapter : RBrush
 {
     /// <summary>
-    /// Adapter for WinForms brushes objects for core.
+    /// The actual PdfSharp brush instance.<br/>
+    /// Should be <see cref="XBrush"/> but there is some fucking issue inheriting from it =/
     /// </summary>
-    internal sealed class BrushAdapter : RBrush
+    private readonly Object _brush;
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public BrushAdapter(Object brush)
     {
-        /// <summary>
-        /// The actual PdfSharp brush instance.<br/>
-        /// Should be <see cref="XBrush"/> but there is some fucking issue inheriting from it =/
-        /// </summary>
-        private readonly Object _brush;
-
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public BrushAdapter(Object brush)
-        {
-            _brush = brush;
-        }
-
-        /// <summary>
-        /// The actual WinForms brush instance.
-        /// </summary>
-        public Object Brush
-        {
-            get { return _brush; }
-        }
-
-        public override void Dispose()
-        { }
+        _brush = brush;
     }
+
+    /// <summary>
+    /// The actual WinForms brush instance.
+    /// </summary>
+    public Object Brush
+    {
+        get { return _brush; }
+    }
+
+    public override void Dispose()
+    { }
 }

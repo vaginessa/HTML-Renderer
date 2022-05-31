@@ -22,166 +22,165 @@ using TheArtOfDev.HtmlRenderer.Demo.Common;
 using TheArtOfDev.HtmlRenderer.PdfSharpCore;
 using TheArtOfDev.HtmlRenderer.WinForms;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
+namespace TheArtOfDev.HtmlRenderer.Demo.WinForms;
+
+public partial class DemoForm : Form
 {
-    public partial class DemoForm : Form
+    #region Fields/Consts
+
+    /// <summary>
+    /// the private font used for the demo
+    /// </summary>
+    private readonly PrivateFontCollection _privateFont = new PrivateFontCollection();
+
+    #endregion
+
+
+    /// <summary>
+    /// Init.
+    /// </summary>
+    public DemoForm()
     {
-        #region Fields/Consts
+        SamplesLoader.Init(HtmlRenderingHelper.IsRunningOnMono() ? "Mono" : "WinForms", typeof(HtmlRender).Assembly.GetName().Version.ToString());
 
-        /// <summary>
-        /// the private font used for the demo
-        /// </summary>
-        private readonly PrivateFontCollection _privateFont = new PrivateFontCollection();
+        InitializeComponent();
 
-        #endregion
+        Icon = GetIcon();
+        _openSampleFormTSB.Image = ImageFromBytes(Common.Properties.Resources.form);
+        _showIEViewTSSB.Image = ImageFromBytes(Common.Properties.Resources.browser);
+        _openInExternalViewTSB.Image = ImageFromBytes(Common.Properties.Resources.chrome);
+        _useGeneratedHtmlTSB.Image = ImageFromBytes(Common.Properties.Resources.code);
+        _generateImageSTB.Image = ImageFromBytes(Common.Properties.Resources.image);
+        _generatePdfTSB.Image = ImageFromBytes(Common.Properties.Resources.pdf);
+        _runPerformanceTSB.Image = ImageFromBytes(Common.Properties.Resources.stopwatch);
 
+        StartPosition = FormStartPosition.CenterScreen;
+        var size = Screen.GetWorkingArea(Point.Empty);
+        Size = new Size((int)(size.Width * 0.7), (int)(size.Height * 0.8));
 
-        /// <summary>
-        /// Init.
-        /// </summary>
-        public DemoForm()
+        LoadCustomFonts();
+
+        _showIEViewTSSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
+        _generatePdfTSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
+    }
+
+    private Image ImageFromBytes(
+        byte[] imageBytes
+    )
+    {
+        using (var ms = new MemoryStream(imageBytes))
         {
-            SamplesLoader.Init(HtmlRenderingHelper.IsRunningOnMono() ? "Mono" : "WinForms", typeof(HtmlRender).Assembly.GetName().Version.ToString());
+            return Image.FromStream(ms);
+        };
+    }
 
-            InitializeComponent();
+    /// <summary>
+    /// Load custom fonts to be used by renderer HTMLs
+    /// </summary>
+    private void LoadCustomFonts()
+    {
+        // load custom font font into private fonts collection
+        var file = Path.GetTempFileName();
+        File.WriteAllBytes(file, Resources.CustomFont);
+        _privateFont.AddFontFile(file);
 
-            Icon = GetIcon();
-            _openSampleFormTSB.Image = ImageFromBytes(Common.Properties.Resources.form);
-            _showIEViewTSSB.Image = ImageFromBytes(Common.Properties.Resources.browser);
-            _openInExternalViewTSB.Image = ImageFromBytes(Common.Properties.Resources.chrome);
-            _useGeneratedHtmlTSB.Image = ImageFromBytes(Common.Properties.Resources.code);
-            _generateImageSTB.Image = ImageFromBytes(Common.Properties.Resources.image);
-            _generatePdfTSB.Image = ImageFromBytes(Common.Properties.Resources.pdf);
-            _runPerformanceTSB.Image = ImageFromBytes(Common.Properties.Resources.stopwatch);
+        // add the fonts to renderer
+        foreach (var fontFamily in _privateFont.Families)
+            HtmlRender.AddFontFamily(fontFamily);
+    }
 
-            StartPosition = FormStartPosition.CenterScreen;
-            var size = Screen.GetWorkingArea(Point.Empty);
-            Size = new Size((int)(size.Width * 0.7), (int)(size.Height * 0.8));
+    /// <summary>
+    /// Get icon for the demo.
+    /// </summary>
+    internal static Icon GetIcon()
+    {
+        var stream = typeof(DemoForm).Assembly.GetManifestResourceStream("TheArtOfDev.HtmlRenderer.Demo.WinForms.html.ico");
+        return stream != null ? new Icon(stream) : null;
+    }
 
-            LoadCustomFonts();
-
-            _showIEViewTSSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
-            _generatePdfTSB.Enabled = !HtmlRenderingHelper.IsRunningOnMono();
-        }
-
-        private Image ImageFromBytes(
-            byte[] imageBytes
-        )
+    private void OnOpenSampleForm_Click(object sender, EventArgs e)
+    {
+        using (var f = new SampleForm())
         {
-            using (var ms = new MemoryStream(imageBytes))
-            {
-                return Image.FromStream(ms);
-            };
+            f.ShowDialog();
         }
+    }
 
-        /// <summary>
-        /// Load custom fonts to be used by renderer HTMLs
-        /// </summary>
-        private void LoadCustomFonts()
+    /// <summary>
+    /// Toggle if to show split view of HtmlPanel and WinForms WebBrowser control.
+    /// </summary>
+    private void OnShowIEView_ButtonClick(object sender, EventArgs e)
+    {
+        _showIEViewTSSB.Checked = !_showIEViewTSSB.Checked;
+        _mainControl.ShowWebBrowserView(_showIEViewTSSB.Checked);
+    }
+
+    /// <summary>
+    /// Open the current html is external process - the default user browser.
+    /// </summary>
+    private void OnOpenInExternalView_Click(object sender, EventArgs e)
+    {
+        var tmpFile = Path.ChangeExtension(Path.GetTempFileName(), ".htm");
+        File.WriteAllText(tmpFile, _mainControl.GetHtml());
+        Process.Start(tmpFile);
+    }
+
+    /// <summary>
+    /// Toggle the use generated html button state.
+    /// </summary>
+    private void OnUseGeneratedHtml_Click(object sender, EventArgs e)
+    {
+        _useGeneratedHtmlTSB.Checked = !_useGeneratedHtmlTSB.Checked;
+        _mainControl.UseGeneratedHtml = _useGeneratedHtmlTSB.Checked;
+        _mainControl.UpdateWebBrowserHtml();
+    }
+
+    /// <summary>
+    /// Open generate image form for the current html.
+    /// </summary>
+    private void OnGenerateImage_Click(object sender, EventArgs e)
+    {
+        using (var f = new GenerateImageForm(_mainControl.GetHtml()))
         {
-            // load custom font font into private fonts collection
-            var file = Path.GetTempFileName();
-            File.WriteAllBytes(file, Resources.CustomFont);
-            _privateFont.AddFontFile(file);
-
-            // add the fonts to renderer
-            foreach (var fontFamily in _privateFont.Families)
-                HtmlRender.AddFontFamily(fontFamily);
+            f.ShowDialog();
         }
+    }
 
-        /// <summary>
-        /// Get icon for the demo.
-        /// </summary>
-        internal static Icon GetIcon()
+    /// <summary>
+    /// Create PDF using PdfSharp project, save to file and open that file.
+    /// </summary>
+    private void OnGeneratePdf_Click(object sender, EventArgs e)
+    {
+        PdfGenerateConfig config = new PdfGenerateConfig();
+        config.PageSize = PageSize.A4;
+        config.SetMargins(20);
+
+        var doc = PdfGenerator.GeneratePdf(_mainControl.GetHtml(), config, null, DemoUtils.OnStylesheetLoad, HtmlRenderingHelper.OnImageLoadPdfSharp);
+        var tmpFile = Path.GetTempFileName();
+        tmpFile = Path.GetFileNameWithoutExtension(tmpFile) + ".pdf";
+        doc.Save(tmpFile);
+        Process.Start(tmpFile);
+    }
+
+    /// <summary>
+    /// Execute performance test by setting all sample HTMLs in a loop.
+    /// </summary>
+    private void OnRunPerformance_Click(object sender, EventArgs e)
+    {
+        _mainControl.UpdateLock = true;
+        _toolStrip.Enabled = false;
+        Application.DoEvents();
+
+        var msg = DemoUtils.RunSamplesPerformanceTest(html =>
         {
-            var stream = typeof(DemoForm).Assembly.GetManifestResourceStream("TheArtOfDev.HtmlRenderer.Demo.WinForms.html.ico");
-            return stream != null ? new Icon(stream) : null;
-        }
+            _mainControl.SetHtml(html);
+            Application.DoEvents(); // so paint will be called
+        });
 
-        private void OnOpenSampleForm_Click(object sender, EventArgs e)
-        {
-            using (var f = new SampleForm())
-            {
-                f.ShowDialog();
-            }
-        }
+        Clipboard.SetDataObject(msg);
+        MessageBox.Show(msg, "Test run results");
 
-        /// <summary>
-        /// Toggle if to show split view of HtmlPanel and WinForms WebBrowser control.
-        /// </summary>
-        private void OnShowIEView_ButtonClick(object sender, EventArgs e)
-        {
-            _showIEViewTSSB.Checked = !_showIEViewTSSB.Checked;
-            _mainControl.ShowWebBrowserView(_showIEViewTSSB.Checked);
-        }
-
-        /// <summary>
-        /// Open the current html is external process - the default user browser.
-        /// </summary>
-        private void OnOpenInExternalView_Click(object sender, EventArgs e)
-        {
-            var tmpFile = Path.ChangeExtension(Path.GetTempFileName(), ".htm");
-            File.WriteAllText(tmpFile, _mainControl.GetHtml());
-            Process.Start(tmpFile);
-        }
-
-        /// <summary>
-        /// Toggle the use generated html button state.
-        /// </summary>
-        private void OnUseGeneratedHtml_Click(object sender, EventArgs e)
-        {
-            _useGeneratedHtmlTSB.Checked = !_useGeneratedHtmlTSB.Checked;
-            _mainControl.UseGeneratedHtml = _useGeneratedHtmlTSB.Checked;
-            _mainControl.UpdateWebBrowserHtml();
-        }
-
-        /// <summary>
-        /// Open generate image form for the current html.
-        /// </summary>
-        private void OnGenerateImage_Click(object sender, EventArgs e)
-        {
-            using (var f = new GenerateImageForm(_mainControl.GetHtml()))
-            {
-                f.ShowDialog();
-            }
-        }
-
-        /// <summary>
-        /// Create PDF using PdfSharp project, save to file and open that file.
-        /// </summary>
-        private void OnGeneratePdf_Click(object sender, EventArgs e)
-        {
-            PdfGenerateConfig config = new PdfGenerateConfig();
-            config.PageSize = PageSize.A4;
-            config.SetMargins(20);
-
-            var doc = PdfGenerator.GeneratePdf(_mainControl.GetHtml(), config, null, DemoUtils.OnStylesheetLoad, HtmlRenderingHelper.OnImageLoadPdfSharp);
-            var tmpFile = Path.GetTempFileName();
-            tmpFile = Path.GetFileNameWithoutExtension(tmpFile) + ".pdf";
-            doc.Save(tmpFile);
-            Process.Start(tmpFile);
-        }
-
-        /// <summary>
-        /// Execute performance test by setting all sample HTMLs in a loop.
-        /// </summary>
-        private void OnRunPerformance_Click(object sender, EventArgs e)
-        {
-            _mainControl.UpdateLock = true;
-            _toolStrip.Enabled = false;
-            Application.DoEvents();
-
-            var msg = DemoUtils.RunSamplesPerformanceTest(html =>
-            {
-                _mainControl.SetHtml(html);
-                Application.DoEvents(); // so paint will be called
-            });
-
-            Clipboard.SetDataObject(msg);
-            MessageBox.Show(msg, "Test run results");
-
-            _mainControl.UpdateLock = false;
-            _toolStrip.Enabled = true;
-        }
+        _mainControl.UpdateLock = false;
+        _toolStrip.Enabled = true;
     }
 }
