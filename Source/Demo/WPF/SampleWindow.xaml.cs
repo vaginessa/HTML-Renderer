@@ -13,7 +13,7 @@
 using System.Windows;
 using System.Windows.Input;
 using TheArtOfDev.HtmlRenderer.Demo.Common;
-using Xceed.Wpf.Toolkit.PropertyGrid;
+//using Xceed.Wpf.Toolkit.PropertyGrid;
 
 namespace TheArtOfDev.HtmlRenderer.Demo.WPF
 {
