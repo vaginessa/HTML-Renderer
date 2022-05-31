@@ -10,18 +10,17 @@
 // - Sun Tsu,
 // "The Art of War"
 
-using PdfSharpCore.Drawing;
-
 using System;
 using System.Collections.Generic;
+using PdfSharpCore.Drawing;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 using TheArtOfDev.HtmlRenderer.Core;
 using TheArtOfDev.HtmlRenderer.Core.Entities;
 using TheArtOfDev.HtmlRenderer.Core.Utils;
-using TheArtOfDev.HtmlRenderer.PdfSharp.Adapters;
-using TheArtOfDev.HtmlRenderer.PdfSharp.Utilities;
+using TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+using TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharp
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore
 {
     /// <summary>
     /// Low level handling of Html Renderer logic, this class is used by <see cref="PdfGenerator"/>.

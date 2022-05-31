@@ -2,7 +2,7 @@
 
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharp.Utilities
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities
 {
     public static class W3CColorUtility
     {

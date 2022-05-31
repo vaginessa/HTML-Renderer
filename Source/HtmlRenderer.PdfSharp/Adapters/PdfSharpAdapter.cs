@@ -10,14 +10,14 @@
 // - Sun Tsu,
 // "The Art of War"
 
+using System.IO;
 using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
-using System.IO;
 using TheArtOfDev.HtmlRenderer.Adapters;
 using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.PdfSharp.Utilities;
+using TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharp.Adapters
+namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters
 {
     /// <summary>
     /// Adapter for PdfSharp library platform.
