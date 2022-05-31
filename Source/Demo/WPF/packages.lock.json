@@ -32,6 +32,12 @@
         "resolved": "0.3.326103",
         "contentHash": "mawMe4BVNz7XsxZ/Hd97pzAKTm07q8Soy3dx5ODsqeKc1e3OKrqUhexAIayVJ6i47+Z7Tw3pWsF/o/xS47DX0w=="
       },
+      "Nerdbank.GitVersioning": {
+        "type": "Direct",
+        "requested": "[3.5.107, )",
+        "resolved": "3.5.107",
+        "contentHash": "oMWWTe9aTUJ1CwU4fpfpduqx7Hzve320PU2SUyFFDzlHXTdjEouWHtFrRbaXV4LysL0lBtlzJM/nmHm47p2KWw=="
+      },
       "Microsoft.Build.Tasks.Git": {
         "type": "Transitive",
         "resolved": "1.1.1",
