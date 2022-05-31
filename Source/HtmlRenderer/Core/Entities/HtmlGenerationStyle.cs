@@ -10,7 +10,7 @@
 // - Sun Tsu,
 // "The Art of War"
 
-namespace TheArtOfDev.HtmlRenderer.Core.Entities;
+namespace TheDepartmentOfCode.HtmlRenderer.Core.Entities;
 
 /// <summary>
 /// Controls the way styles are generated when html is generated.

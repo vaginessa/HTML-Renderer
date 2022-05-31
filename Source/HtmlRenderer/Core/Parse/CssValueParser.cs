@@ -12,12 +12,12 @@
 
 using System;
 using System.Globalization;
-using TheArtOfDev.HtmlRenderer.Adapters;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Dom;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Dom;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
 
-namespace TheArtOfDev.HtmlRenderer.Core.Parse;
+namespace TheDepartmentOfCode.HtmlRenderer.Core.Parse;
 
 /// <summary>
 /// Parse CSS properties values like numbers, Urls, etc.

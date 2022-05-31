@@ -11,12 +11,12 @@
 // "The Art of War"
 
 using System.Windows.Forms;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
-using TheArtOfDev.HtmlRenderer.Adapters;
-using TheArtOfDev.HtmlRenderer.WinForms.Utilities;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.WinForms.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.WinForms.Adapters;
 
 /// <summary>
 /// Adapter for WinForms Control for core.

@@ -11,9 +11,9 @@
 // "The Art of War"
 
 using PdfSharpCore.Drawing;
-using TheArtOfDev.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Adapters;
 
 /// <summary>
 /// Adapter for WinForms Image object for core.

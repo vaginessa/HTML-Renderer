@@ -11,9 +11,9 @@
 // "The Art of War"
 
 using System.Windows.Media;
-using TheArtOfDev.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.WPF.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.WPF.Adapters;
 
 /// <summary>
 /// Adapter for WPF Font.

@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TheArtOfDev.HtmlRenderer.Demo.WPF</RootNamespace>
+    <RootNamespace>TheDepartmentOfCode.HtmlRenderer.Demo.WPF</RootNamespace>
     <AssemblyName>HtmlRendererWpfDemo</AssemblyName>
     <RestorePackages>true</RestorePackages>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

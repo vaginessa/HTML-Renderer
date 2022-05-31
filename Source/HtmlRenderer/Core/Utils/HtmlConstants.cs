@@ -1,4 +1,4 @@
-namespace TheArtOfDev.HtmlRenderer.Core.Utils;
+namespace TheDepartmentOfCode.HtmlRenderer.Core.Utils;
 
 /// <summary>
 /// Defines HTML strings

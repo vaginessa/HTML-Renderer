@@ -14,11 +14,11 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Adapters;
-using TheArtOfDev.HtmlRenderer.WinForms.Utilities;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.WinForms.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.WinForms.Adapters;
 
 /// <summary>
 /// Adapter for WinForms platforms.

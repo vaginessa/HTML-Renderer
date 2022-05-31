@@ -19,9 +19,9 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
-using TheArtOfDev.HtmlRenderer.WinForms;
+using TheDepartmentOfCode.HtmlRenderer.WinForms;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WinForms;
+namespace TheDepartmentOfCode.HtmlRenderer.Demo.WinForms;
 
 public partial class PerfForm : Form
 {

@@ -10,16 +10,16 @@
 // - Sun Tsu,
 // "The Art of War"
 
-using PdfSharpCore.Drawing;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Threading;
-using TheArtOfDev.HtmlRenderer.Core.Entities;
-using TheArtOfDev.HtmlRenderer.Demo.Common;
+using PdfSharpCore.Drawing;
+using TheDepartmentOfCode.HtmlRenderer.Core.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Demo.Common;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WinForms;
+namespace TheDepartmentOfCode.HtmlRenderer.Demo.WinForms;
 
 internal static class HtmlRenderingHelper
 {

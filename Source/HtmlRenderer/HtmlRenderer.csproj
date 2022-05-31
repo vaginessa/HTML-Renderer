@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <RootNamespace>TheArtOfDev.HtmlRenderer</RootNamespace>
+    <RootNamespace>TheDepartmentOfCode.HtmlRenderer</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <IncludeSymbols>True</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>

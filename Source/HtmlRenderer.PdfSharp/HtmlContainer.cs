@@ -6,21 +6,21 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
 using System;
 using System.Collections.Generic;
 using PdfSharpCore.Drawing;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Core;
-using TheArtOfDev.HtmlRenderer.Core.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
-using TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
-using TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core;
+using TheDepartmentOfCode.HtmlRenderer.Core.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore;
 
 /// <summary>
 /// Low level handling of Html Renderer logic, this class is used by <see cref="PdfGenerator"/>.

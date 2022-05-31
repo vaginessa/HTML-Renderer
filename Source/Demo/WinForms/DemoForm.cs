@@ -10,19 +10,18 @@
 // - Sun Tsu,
 // "The Art of War"
 
-using PdfSharpCore;
-
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
 using System.Windows.Forms;
-using TheArtOfDev.HtmlRenderer.Demo.Common;
-using TheArtOfDev.HtmlRenderer.PdfSharpCore;
-using TheArtOfDev.HtmlRenderer.WinForms;
+using PdfSharpCore;
+using TheDepartmentOfCode.HtmlRenderer.Demo.Common;
+using TheDepartmentOfCode.HtmlRenderer.PdfSharpCore;
+using TheDepartmentOfCode.HtmlRenderer.WinForms;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WinForms;
+namespace TheDepartmentOfCode.HtmlRenderer.Demo.WinForms;
 
 public partial class DemoForm : Form
 {
@@ -94,7 +93,7 @@ public partial class DemoForm : Form
     /// </summary>
     internal static Icon GetIcon()
     {
-        var stream = typeof(DemoForm).Assembly.GetManifestResourceStream("TheArtOfDev.HtmlRenderer.Demo.WinForms.html.ico");
+        var stream = typeof(DemoForm).Assembly.GetManifestResourceStream("TheDepartmentOfCode.HtmlRenderer.Demo.WinForms.html.ico");
         return stream != null ? new Icon(stream) : null;
     }
 

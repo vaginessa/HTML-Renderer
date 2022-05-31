@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TheArtOfDev.HtmlRenderer.Demo.WinForms</RootNamespace>
+    <RootNamespace>TheDepartmentOfCode.HtmlRenderer.Demo.WinForms</RootNamespace>
     <AssemblyName>HtmlRendererWinFormsDemo</AssemblyName>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>

@@ -13,15 +13,15 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using TheArtOfDev.HtmlRenderer.Adapters;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Dom;
-using TheArtOfDev.HtmlRenderer.Core.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Handlers;
-using TheArtOfDev.HtmlRenderer.Core.Parse;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Dom;
+using TheDepartmentOfCode.HtmlRenderer.Core.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Handlers;
+using TheDepartmentOfCode.HtmlRenderer.Core.Parse;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
 
-namespace TheArtOfDev.HtmlRenderer.Core;
+namespace TheDepartmentOfCode.HtmlRenderer.Core;
 
 /// <summary>
 /// Low level handling of Html Renderer logic.<br/>

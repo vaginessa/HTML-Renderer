@@ -13,11 +13,11 @@
 using System.IO;
 using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
-using TheArtOfDev.HtmlRenderer.Adapters;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
+using TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Utilities;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Adapters;
 
 /// <summary>
 /// Adapter for PdfSharp library platform.

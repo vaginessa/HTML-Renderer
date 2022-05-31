@@ -1,9 +1,9 @@
 using System;
 using System.Globalization;
-using TheArtOfDev.HtmlRenderer.Core.Parse;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.Core.Parse;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
 
-namespace TheArtOfDev.HtmlRenderer.Core.Dom;
+namespace TheDepartmentOfCode.HtmlRenderer.Core.Dom;
 
 /// <summary>
 /// Represents and gets info about a CSS Length

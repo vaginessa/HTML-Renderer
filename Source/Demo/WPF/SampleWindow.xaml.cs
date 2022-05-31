@@ -10,12 +10,12 @@
 // - Sun Tsu,
 // "The Art of War"
 
-using System.Windows;
 using System.Windows.Input;
-using TheArtOfDev.HtmlRenderer.Demo.Common;
+using TheDepartmentOfCode.HtmlRenderer.Demo.Common;
+
 //using Xceed.Wpf.Toolkit.PropertyGrid;
 
-namespace TheArtOfDev.HtmlRenderer.Demo.WPF;
+namespace TheDepartmentOfCode.HtmlRenderer.Demo.WPF;
 
 /// <summary>
 /// Interaction logic for SampleWindow.xaml

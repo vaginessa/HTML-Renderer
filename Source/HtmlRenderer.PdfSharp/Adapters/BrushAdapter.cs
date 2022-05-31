@@ -12,9 +12,9 @@
 
 using System;
 using PdfSharpCore.Drawing;
-using TheArtOfDev.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Adapters;
 
 /// <summary>
 /// Adapter for WinForms brushes objects for core.

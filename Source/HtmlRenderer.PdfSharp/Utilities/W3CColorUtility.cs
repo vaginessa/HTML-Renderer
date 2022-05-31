@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
 
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore.Utilities;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Utilities;
 
 public static class W3CColorUtility
 {

@@ -12,7 +12,7 @@
 
 using System;
 
-namespace TheArtOfDev.HtmlRenderer.Adapters.Entities;
+namespace TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
 
 /// <summary>
 /// Specifies style information applied to text.

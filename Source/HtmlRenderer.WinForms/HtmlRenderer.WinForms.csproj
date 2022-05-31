@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
-    <RootNamespace>TheArtOfDev.HtmlRenderer.WinForms</RootNamespace>
+    <RootNamespace>TheDepartmentOfCode.HtmlRenderer.WinForms</RootNamespace>
     <StartupObject>
     </StartupObject>
     <PublishUrl>publish\</PublishUrl>

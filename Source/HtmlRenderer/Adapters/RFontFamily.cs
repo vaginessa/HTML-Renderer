@@ -10,7 +10,7 @@
 // - Sun Tsu,
 // "The Art of War"
 
-namespace TheArtOfDev.HtmlRenderer.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.Adapters;
 
 /// <summary>
 /// Adapter for platform specific font family object - define the available font families to use.<br/>

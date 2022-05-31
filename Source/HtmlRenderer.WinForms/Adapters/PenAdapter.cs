@@ -11,10 +11,10 @@
 // "The Art of War"
 
 using System.Drawing;
-using TheArtOfDev.HtmlRenderer.Adapters.Entities;
-using TheArtOfDev.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Adapters.Entities;
 
-namespace TheArtOfDev.HtmlRenderer.WinForms.Adapters;
+namespace TheDepartmentOfCode.HtmlRenderer.WinForms.Adapters;
 
 /// <summary>
 /// Adapter for WinForms pens objects for core.

@@ -14,12 +14,12 @@ using System;
 using PdfSharpCore;
 using PdfSharpCore.Drawing;
 using PdfSharpCore.Pdf;
-using TheArtOfDev.HtmlRenderer.Core;
-using TheArtOfDev.HtmlRenderer.Core.Entities;
-using TheArtOfDev.HtmlRenderer.Core.Utils;
-using TheArtOfDev.HtmlRenderer.PdfSharpCore.Adapters;
+using TheDepartmentOfCode.HtmlRenderer.Core;
+using TheDepartmentOfCode.HtmlRenderer.Core.Entities;
+using TheDepartmentOfCode.HtmlRenderer.Core.Utils;
+using TheDepartmentOfCode.HtmlRenderer.PdfSharpCore.Adapters;
 
-namespace TheArtOfDev.HtmlRenderer.PdfSharpCore;
+namespace TheDepartmentOfCode.HtmlRenderer.PdfSharpCore;
 
 /// <summary>
 /// TODO:a add doc
