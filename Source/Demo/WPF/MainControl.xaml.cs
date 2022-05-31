@@ -6,12 +6,13 @@
 // like the days and months;
 // they die and are reborn,
 // like the four seasons."
-// 
+//
 // - Sun Tsu,
 // "The Art of War"
 
 using System;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows;
@@ -233,7 +234,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
         }
 
         /// <summary>
-        /// On text change in the html editor update 
+        /// On text change in the html editor update
         /// </summary>
         private void OnHtmlEditor_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -362,7 +363,18 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WPF
         private void SetColoredText(string text, bool color)
         {
             var selectionStart = _htmlEditor.CaretPosition;
-            _htmlEditor.Text = color ? HtmlSyntaxHighlighter.Process(text) : text.Replace("\n", "\\par ");
+
+            var rtfText = color
+                ? HtmlSyntaxHighlighter.Process(text)
+                : text.Replace("\n", "\\par ");
+
+            using (var ms = new MemoryStream(Encoding.Default.GetBytes(rtfText)))
+            {
+                ms.Position = 0;
+                _htmlEditor.SelectAll();
+                _htmlEditor.Selection.Load(ms, DataFormats.Rtf);
+            }
+
             _htmlEditor.CaretPosition = selectionStart;
         }
 
