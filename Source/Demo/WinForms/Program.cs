@@ -1,4 +1,4 @@
-// "Therefore those skilled at the unorthodox
+﻿// "Therefore those skilled at the unorthodox
 // are infinite as heaven and earth,
 // inexhaustible as the great rivers.
 // When they come to an end,
@@ -29,6 +29,7 @@ namespace TheArtOfDev.HtmlRenderer.Demo.WinForms
             AppDomain.CurrentDomain.AssemblyResolve += OnResolveAssembly;
 
             Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new DemoForm());
 
