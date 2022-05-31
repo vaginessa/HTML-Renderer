@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>TheArtOfDev.HtmlRenderer.Demo.WPF</RootNamespace>
-	  <AssemblyName>HtmlRendererWpfDemo</AssemblyName>
+    <AssemblyName>HtmlRendererWpfDemo</AssemblyName>
     <RestorePackages>true</RestorePackages>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
