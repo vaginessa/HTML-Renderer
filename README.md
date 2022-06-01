@@ -1,4 +1,4 @@
-HTML Renderer [![Build status](https://ci.appveyor.com/api/projects/status/cm8xpf8ebt3hyi3e)](https://ci.appveyor.com/project/ArthurHub/html-renderer)
+HTML Renderer [![CI](https://github.com/the-department-of-code/HTML-Renderer/actions/workflows/ci.yml/badge.svg)](https://github.com/the-department-of-code/HTML-Renderer/actions/workflows/ci.yml)
 =============
 
 A fork of [ArthurHub/HTML-Renderer](https://github.com/ArthurHub/HTML-Renderer) updated to .NET Standard / .NET 6.0.
