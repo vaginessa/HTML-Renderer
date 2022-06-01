@@ -13,6 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        # NerdBank.GitVersioning needs at least as much depth as the last time
+        # the version number changed to be able to correctly calculate the verison
+        # number
+        fetch-depth: 25
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
